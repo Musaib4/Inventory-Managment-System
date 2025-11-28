@@ -9,10 +9,38 @@
 
 
 </head>
-<body class="bg-gray-300">
+<body class="bg-gray-300 overflow-x-hidden">
   <!-- navbar -->
 
-   <header class="flex bg-white-500 ml-6 mr-4 items-center justify-between px-4 py-3">
+  <aside class="bg-white w-64 p-4 h-full fixed sidebar" id="sidebar">
+    <!-- logo + btn -->
+    <div class="flex justify-between">
+      <h1 class="text-2xl font-semibold">Invent-ro</h1>
+      <button id="btn" class="border border-gray-400 p-1 rounded-lg text-gray-800 cursor-pointer hover:bg-gray-500 hover:text-white">side</button>
+    </div>
+
+    <nav class="mt-6">
+      <ul class="font-semibold text-lg space-y-2">
+        <li class="list-item-style active">Dashboard</li>
+        <li class="list-item-style">Logistics</li>
+        <li class="list-item-style">Orders</li>
+        <li class="list-item-style">Inventory</li>
+        <li class="list-item-style">Report</li>
+        <li class="list-item-style">Cashflow</li>
+        <li class="list-item-style">Customers</li>
+        <!-- divider -->
+        <li class="border-t border-gray-300 my-2"></li>
+        <li class="list-item-style">UserGuide</li>
+        <li class="list-item-style">FAQ</li>
+        <li class="list-item-style">Help Center</li>
+      </ul>
+    </nav>
+  </aside>
+
+
+<main class=" ml-58 p-1" id="main">
+
+  <header class="flex bg-white-500 mr-3 ml-6 items-center justify-between px-4 py-3">
   <div class="left">
     <h1 class="text-3xl font-bold">Dashboard</h1>
   </div>
@@ -47,7 +75,6 @@
   </div>
 </header>
 
-<main class="w-full m-0 p-4">
   <!-- details -->
   <div class=" flex gap-0.5 ml-3 mr-3 rounded-md p-4 ">
     <div class=" bg-white w-1/4 p-4 rounded-l-2xl"> 

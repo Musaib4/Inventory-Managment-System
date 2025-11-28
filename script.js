@@ -1,3 +1,15 @@
+const sidebar =document.getElementById('sidebar')
+const sidebtn = document.getElementById('btn')
+const mainContent = document.getElementById('main')
+
+sidebtn.addEventListener('click',()=>{
+  sidebar.classList.toggle('hidden');
+  mainContent.classList.toggle('side')
+})
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // master data (original) and displayedData (what we render)
   const masterData = [
