@@ -314,8 +314,8 @@
   .h-84 {
     height: calc(var(--spacing) * 84);
   }
-  .h-full {
-    height: 100%;
+  .h-screen {
+    height: 100vh;
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
@@ -402,6 +402,9 @@
   .overflow-x-hidden {
     overflow-x: hidden;
   }
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
   .\!rounded-full {
     border-radius: calc(infinity * 1px) !important;
   }
@@ -470,9 +473,6 @@
   }
   .bg-gray-100 {
     background-color: var(--color-gray-100);
-  }
-  .bg-gray-300 {
-    background-color: var(--color-gray-300);
   }
   .bg-green-50 {
     background-color: var(--color-green-50);

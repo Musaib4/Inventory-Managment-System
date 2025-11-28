@@ -1,13 +1,19 @@
 const sidebar =document.getElementById('sidebar')
 const sidebtn = document.getElementById('btn')
 const mainContent = document.getElementById('main')
+const openbtn = document.getElementById('btn1')
 
 sidebtn.addEventListener('click',()=>{
   sidebar.classList.toggle('hidden');
   mainContent.classList.toggle('side')
+  openbtn.classList.toggle('hidden')
 })
 
-
+openbtn.addEventListener('click',()=>{
+  sidebar.classList.toggle('hidden');
+  mainContent.classList.toggle('side')
+  openbtn.classList.toggle('hidden')
+})
 
 
 document.addEventListener('DOMContentLoaded', () => {

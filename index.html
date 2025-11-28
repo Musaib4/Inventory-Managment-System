@@ -9,14 +9,14 @@
 
 
 </head>
-<body class="bg-gray-300 overflow-x-hidden">
+<body class="bg-gray-100 overflow-x-hidden">
   <!-- navbar -->
 
-  <aside class="bg-white w-64 p-4 h-full fixed sidebar" id="sidebar">
+  <aside class="bg-white w-64 p-4 h-screen overflow-y-auto fixed sidebar" id="sidebar">
     <!-- logo + btn -->
     <div class="flex justify-between">
       <h1 class="text-2xl font-semibold">Invent-ro</h1>
-      <button id="btn" class="border border-gray-400 p-1 rounded-lg text-gray-800 cursor-pointer hover:bg-gray-500 hover:text-white">side</button>
+      <button id="btn" class="border border-gray-400 p-1 rounded-lg text-gray-800 cursor-pointer hover:bg-gray-500 hover:text-white">⇐</button>
     </div>
 
     <nav class="mt-6">
@@ -41,7 +41,8 @@
 <main class=" ml-58 p-1" id="main">
 
   <header class="flex bg-white-500 mr-3 ml-6 items-center justify-between px-4 py-3">
-  <div class="left">
+  <div class="left flex gap-2">
+    <button id="btn1" class="border border-gray-400 p-1 hidden rounded-lg text-gray-800 cursor-pointer hover:bg-gray-500 hover:text-white">➤</button>
     <h1 class="text-3xl font-bold">Dashboard</h1>
   </div>
 
