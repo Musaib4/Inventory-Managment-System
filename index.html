@@ -1,0 +1,630 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.1/dist/chartjs-plugin-annotation.min.js"></script>
+
+
+</head>
+<body class="bg-gray-300">
+  <!-- navbar -->
+
+   <header class="flex bg-white-500 ml-6 mr-4 items-center justify-between px-4 py-3">
+  <div class="left">
+    <h1 class="text-3xl font-bold">Dashboard</h1>
+  </div>
+
+  <!-- right side -->
+  <div class="flex items-center gap-3">
+    <!-- search container -->
+    <div
+      class="bg-gray-100 border border-transparent focus-within:border-slate-900 focus-within:bg-transparent flex items-center px-4 rounded-full h-10 lg:w-80 transition-all">
+      <!-- icon inside search -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904"
+           class="w-4 h-4 fill-gray-500 mr-3 flex-shrink-0">
+        <path d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z"></path>
+      </svg>
+
+      <input type="text" placeholder="Search..."
+             class="w-full outline-none bg-transparent text-slate-900 text-sm" />
+    </div>
+
+    <!-- bell/notification icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+         class="cursor-pointer fill-current text-black hover:text-blue-700 flex-shrink-0"
+         viewBox="0 0 371.263 371.263" role="img" aria-label="notifications">
+      <path d="M305.402 234.794v-70.54c0-52.396-33.533-98.085-79.702-115.151.539-2.695.838-5.449.838-8.204C226.539 18.324 208.215 0 185.64 0s-40.899 18.324-40.899 40.899c0 2.695.299 5.389.778 7.964-15.868 5.629-30.539 14.551-43.054 26.647-23.593 22.755-36.587 53.354-36.587 86.169v73.115c0 2.575-2.096 4.731-4.731 4.731-22.096 0-40.959 16.647-42.995 37.845-1.138 11.797 2.755 23.533 10.719 32.276 7.904 8.683 19.222 13.713 31.018 13.713h72.217c2.994 26.887 25.869 47.905 53.534 47.905s50.54-21.018 53.534-47.905h72.217c11.797 0 23.114-5.03 31.018-13.713 7.904-8.743 11.797-20.479 10.719-32.276-2.036-21.198-20.958-37.845-42.995-37.845a4.704 4.704 0 0 1-4.731-4.731zM185.64 23.952c9.341 0 16.946 7.605 16.946 16.946 0 .778-.12 1.497-.24 2.275-4.072-.599-8.204-1.018-12.336-1.138-7.126-.24-14.132.24-21.078 1.198-.12-.778-.24-1.497-.24-2.275.002-9.401 7.607-17.006 16.948-17.006zm0 323.358c-14.431 0-26.527-10.3-29.342-23.952h58.683c-2.813 13.653-14.909 23.952-29.341 23.952zm143.655-67.665c.479 5.15-1.138 10.12-4.551 13.892-3.533 3.773-8.204 5.868-13.353 5.868H59.89c-5.15 0-9.82-2.096-13.294-5.868-3.473-3.772-5.09-8.743-4.611-13.892.838-9.042 9.282-16.168 19.162-16.168 15.809 0 28.683-12.874 28.683-28.683v-73.115c0-26.228 10.419-50.719 29.282-68.923 18.024-17.425 41.498-26.887 66.528-26.887 1.198 0 2.335 0 3.533.06 50.839 1.796 92.277 45.929 92.277 98.325v70.54c0 15.809 12.874 28.683 28.683 28.683 9.88 0 18.264 7.126 19.162 16.168z"></path>
+    </svg>
+
+     <img
+    src="https://docs.material-tailwind.com/img/face-2.jpg"
+    alt="avatar"
+    class="relative inline-block h-8 cursor-pointer w-8 !rounded-full  object-cover object-center"
+  />
+  </div>
+</header>
+
+<main class="w-full m-0 p-4">
+  <!-- details -->
+  <div class=" flex gap-0.5 ml-3 mr-3 rounded-md p-4 ">
+    <div class=" bg-white w-1/4 p-4 rounded-l-2xl"> 
+
+      <!-- FIXED SVG -->
+      <svg 
+        xmlns="http://www.w3.org/2000/svg"
+        class="border border-gray-400 rounded-lg w-10 h-11 p-1 object-contain text-gray-600"
+        viewBox="0 0 48 48"
+      >
+        <text 
+          x="50%" 
+          y="50%" 
+          dominant-baseline="middle" 
+          text-anchor="middle"
+          font-size="38" 
+          font-family="Arial" 
+          fill="currentColor"
+        >
+          $
+        </text>
+      </svg>
+
+
+
+      <p class="mt-5 text-gray-700 text-2xl">Total Revenue</p>
+      <div class="flex mt-1 justify-between ">
+        <p class="  text-2xl font-bold">$33333</p>
+        <div class="flex text-green-500 text-center border-1 border-gray-500 rounded-3xl gap-2 p-1 font-medium">
+          <p class="hidden">up</p>
+          <p class="">down</p>
+          <p class="">16%</p>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="bg-white w-1/4 p-4"> 
+
+      <!-- FIXED SVG -->
+      <svg 
+        xmlns="http://www.w3.org/2000/svg"
+        class="border border-gray-400 rounded-lg w-10 h-11 p-1 object-contain text-gray-600"
+        viewBox="0 0 48 48"
+      >
+        <text 
+          x="50%" 
+          y="50%" 
+          dominant-baseline="middle" 
+          text-anchor="middle"
+          font-size="38" 
+          font-family="Arial" 
+          fill="currentColor"
+        >
+          $
+        </text>
+      </svg>
+
+
+
+      <p class="mt-5 text-gray-700 text-2xl">Total Revenue</p>
+      <div class="flex mt-1 justify-between ">
+        <p class="  text-2xl font-bold">$33333</p>
+        <div class="flex text-green-500 text-center border-1 border-gray-500 rounded-3xl gap-2 p-1 font-medium">
+          <p class="hidden">up</p>
+          <p class="">down</p>
+          <p class="">16%</p>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="bg-white w-1/4 p-4"> 
+
+      <!-- FIXED SVG -->
+      <svg 
+        xmlns="http://www.w3.org/2000/svg"
+        class="border border-gray-400 rounded-lg w-10 h-11 p-1 object-contain text-gray-600"
+        viewBox="0 0 48 48"
+      >
+        <text 
+          x="50%" 
+          y="50%" 
+          dominant-baseline="middle" 
+          text-anchor="middle"
+          font-size="38" 
+          font-family="Arial" 
+          fill="currentColor"
+        >
+          $
+        </text>
+      </svg>
+
+
+
+      <p class="mt-5 text-gray-700 text-2xl">Total Revenue</p>
+      <div class="flex mt-1 justify-between ">
+        <p class="  text-2xl font-bold">$33333</p>
+        <div class="flex text-green-500 text-center border-1 border-gray-500 rounded-3xl gap-2 p-1 font-medium">
+          <p class="hidden">up</p>
+          <p class="">down</p>
+          <p class="">16%</p>
+        </div>
+        
+      </div>
+    </div>
+
+   <div class="bg-white w-1/4 p-4 rounded-r-2xl"> 
+
+      <!-- FIXED SVG -->
+      <svg 
+        xmlns="http://www.w3.org/2000/svg"
+        class="border border-gray-400 rounded-lg w-10 h-11 p-1 object-contain text-gray-600"
+        viewBox="0 0 48 48"
+      >
+        <text 
+          x="50%" 
+          y="50%" 
+          dominant-baseline="middle" 
+          text-anchor="middle"
+          font-size="38" 
+          font-family="Arial" 
+          fill="currentColor"
+        >
+          $
+        </text>
+      </svg>
+
+
+
+      <p class="mt-5 text-gray-700 text-2xl">Total Revenue</p>
+      <div class="flex mt-1 justify-between ">
+        <p class="  text-2xl font-bold">$33333</p>
+        <div class="flex text-green-500 text-center border-1 border-gray-500 rounded-3xl gap-2 p-1 font-medium">
+          <p class="hidden">up</p>
+          <p class="">down</p>
+          <p class="">16%</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- charts -->
+
+  <div class="flex gap-2 ml-7 mr-7">
+    <!-- chart1 -->
+      <div class="bg-white w-1/2 p-5 rounded-2xl">
+      <div class="flex items-center justify-between gap-3">
+          <h1 class="text-gray-700 font-semibold mr-4">Country Redistribution</h1>
+
+          <!-- segmented control -->
+          <!-- Yearly dropdown (Tailwind) -->
+          <div class="relative inline-block text-left">
+            <button id="rangeToggle"
+                    aria-haspopup="true" aria-expanded="false"
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 shadow-sm text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-300">
+              <!-- calendar icon -->
+              <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.2" fill="transparent"/>
+                <path d="M16 3v4M8 3v4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+
+              <!-- label (will update) -->
+              <span id="rangeLabel" class="text-sm">Yearly</span>
+
+              <!-- chevron -->
+              <svg id="rangeChevron" class="w-3 h-3 text-gray-400" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <!-- dropdown menu -->
+            <div id="rangeMenu" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-50">
+              <div class="py-1">
+                <button type="button" data-range="year" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Yearly</button>
+                <button type="button" data-range="month" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Monthly</button>
+                <button type="button" data-range="day" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Daily</button>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- calendar input -->
+        </div>
+        <div class="h-84">
+        <canvas id="countryChart"></canvas>
+        </div>
+        
+      </div>
+      <!-- chart2 -->
+      <div class="bg-white p-5 w-1/2 rounded-2xl">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h1 class="text-2xl font-semibold mr-4">Total Sales</h1>
+          </div>
+
+          
+          <!-- segmented control -->
+          <!-- Yearly dropdown (Tailwind) -->
+          <div class="relative inline-block text-left">
+            <button id="rangeToggle"
+                    aria-haspopup="true" aria-expanded="false"
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 shadow-sm text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-300">
+              <!-- calendar icon -->
+              <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.2" fill="transparent"/>
+                <path d="M16 3v4M8 3v4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+
+              <!-- label (will update) -->
+              <span id="rangeLabel" class="text-sm">Yearly</span>
+
+              <!-- chevron -->
+              <svg id="rangeChevron" class="w-3 h-3 text-gray-400" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <!-- dropdown menu -->
+            <div id="rangeMenu" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-50">
+              <div class="py-1">
+                <button type="button" data-range="year" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Yearly</button>
+                <button type="button" data-range="month" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Monthly</button>
+                <button type="button" data-range="day" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Daily</button>
+              </div>
+            </div>
+          </div>
+
+          
+
+
+          <!-- calendar input -->
+        </div>
+
+        <div class="flex text-center  gap-2 p-1 font-medium">
+              <p>$788</p>
+            <p class="hidden text-green-500">up</p>
+            <p class="text-green-500 ">down</p>
+            <p class="text-green-500 ">16%</p>
+          </div>
+
+        <div class="h-84">
+          <canvas id="salesChart"></canvas>
+        </div>
+    </div>
+  </div>
+
+  <!-- shopping product list -->
+
+  <div class="product">
+    <!-- topline -->
+    <div class="bg-white  mt-3 ml-7 mr-7 rounded-t-2xl p-3">
+    <!-- toplinediv -->
+     <div class="flex p-3 justify-between">
+      <div class="left-p">
+        <h1 class="font-semibold text-2xl">Shipping Product Lists</h1>       
+      </div>
+
+      <div class="right-p flex">
+        <div
+          class="bg-gray-100 border border-gray-500 focus-within:border-slate-900 focus-within:bg-transparent flex items-center px-4 rounded-lg h-11 lg:w-80 transition-all">
+          <!-- icon inside search -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904"
+              class="w-4 h-4 fill-gray-500 mr-3 flex-shrink-0">
+            <path d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z"></path>
+          </svg>
+
+          <input type="text" placeholder="Search..."
+                class="w-full outline-none bg-transparent text-slate-900 text-sm" />
+        </div>
+        <button class="border border-gray-500 rounded-lg p-1 font-semibold text-gray-600 ml-3 cursor-pointer">See All</button>
+      </div>
+
+     </div>
+     <!-- 2ndlinediv -->
+      <!-- productsdiv -->
+    </div>
+    <!-- 2ndline -->
+      <!-- table header -->
+      <div class="grid grid-cols-7 ml-7 mr-7 gap-4 px-4 py-3 text-sm font-medium text-gray-700">
+        <div id="hdr-id" data-key="id" class="cursor-pointer flex items-center gap-1">
+          Tracking ID <span class="sort-arrow text-gray-400">↕</span>
+        </div>
+        <div id="hdr-dest" data-key="dest" class="cursor-pointer flex items-center gap-1">
+          Destination <span class="sort-arrow text-gray-400">↕</span>
+        </div>
+        <div id="hdr-customer" data-key="customer" class="cursor-pointer flex items-center gap-1">
+          Customer <span class="sort-arrow text-gray-400">↕</span>
+        </div>
+        <div id="hdr-delivery" data-key="delivery" class="cursor-pointer flex items-center gap-1">
+          Delivery Time <span class="sort-arrow text-gray-400">↕</span>
+        </div>
+        <div id="hdr-carrier" data-key="carrier" class="cursor-pointer flex items-center gap-1">
+          Carrier <span class="sort-arrow text-gray-400">↕</span>
+        </div>
+        <div id="hdr-cost" data-key="cost" class="cursor-pointer flex items-center gap-1">
+          Cost <span class="sort-arrow text-gray-400">↕</span>
+        </div>
+        <div id="hdr-status" data-key="status" class="cursor-pointer flex items-center gap-1">
+          Status <span class="sort-arrow text-gray-400">↕</span>
+        </div>
+      </div>
+
+      <!-- table rows wrapper -->
+      <div id="tableBody" class="divide-y ml-7 mr-7 bg-white mt-2"></div>
+          </div>
+
+  </div>
+
+
+
+</main>
+
+ <script>
+const ctx1 = document.getElementById('countryChart').getContext('2d');
+
+new Chart(ctx1, {
+  type: 'bar',
+
+  data: {
+    labels: ['USA', 'Russia', 'Asia', 'Africa', 'Australia'],
+    datasets: [
+      {
+        label: 'Value',
+        data: [29, 20, 14, 10, 8],
+
+        // different colors for bars
+        backgroundColor: [
+          'blue',
+          'skyblue',
+        ],
+
+        borderRadius: 6,
+        barThickness: 29,
+        categoryPercentage: 0.4,
+      }
+    ]
+  },
+
+  options: {
+    indexAxis: 'y',
+    maintainAspectRatio: false,
+
+    plugins: {
+      legend: { display: false },
+
+      tooltip: {
+        callbacks: {
+          label: (ctx) => ctx.parsed.x + ' M'
+        }
+      }
+    },
+
+    scales: {
+      /* X AXIS */
+      x: {
+        display: true,
+        beginAtZero: true,
+        max: 40,
+        ticks: {
+          color: '#374151',
+          font: { size: 16, weight: '500' },
+          callback: value => value + 'M'
+        },
+        grid: { display: false }
+      },
+
+      /* Y AXIS */
+      y: {
+        grid: { display: false },
+        ticks: {
+          color: '#374151',
+          font: { size: 14, weight: '600' }
+        }
+      }
+    }
+  }
+});
+
+
+
+
+const labels = ['Sat','Sun','Mon','Tue','Wed','Thu','Fri'];
+const values = [3200, 4200, 3300, 5284, 3700, 4100, 3600]; // example; Tue has the big point in screenshot
+
+/* ---------- build chart ---------- */
+const ctx = document.getElementById('salesChart').getContext('2d');
+
+/* gradient fill */
+const grad = ctx.createLinearGradient(0, 0, 0, 300);
+grad.addColorStop(0, 'rgba(37,99,235,0.18)');  // top = blue  (rgba(37,99,235) = #2563EB)
+grad.addColorStop(0.6, 'rgba(59,130,246,0.08)');
+grad.addColorStop(1, 'rgba(59,130,246,0.02)'); // bottom faint
+
+/* create chart instance */
+const salesChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [{
+      label: 'Sales',
+      data: values,
+      fill: true,
+      backgroundColor: grad,
+      borderColor: '#2563EB',       // line color
+      pointBackgroundColor: '#2563EB',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: '#2563EB',
+      pointRadius: 4,
+      pointHoverRadius: 6,
+      borderWidth: 2,
+      tension: 0.36,               // smooth curve
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: { duration: 600 },
+    plugins: {
+      legend: { display: false },
+
+      tooltip: {
+        enabled: false, // disable native tooltip; we'll use custom to match bubble look
+        external: function(context) {
+          // custom tooltip to mimic the speech-bubble style
+          const tooltipModel = context.tooltip;
+          const canvas = context.chart.canvas;
+          const chartRect = canvas.getBoundingClientRect();
+
+          // remove old tooltip element
+          let tooltipEl = document.getElementById('chartjs-tooltip');
+          if (!tooltipEl) {
+            tooltipEl = document.createElement('div');
+            tooltipEl.id = 'chartjs-tooltip';
+            document.body.appendChild(tooltipEl);
+          }
+
+          // hide if no tooltip or not active
+          if (tooltipModel.opacity === 0) {
+            tooltipEl.style.opacity = 0;
+            return;
+          }
+
+          // position and style
+          tooltipEl.style.opacity = 1;
+          tooltipEl.style.position = 'absolute';
+          tooltipEl.style.pointerEvents = 'none';
+          tooltipEl.style.transform = 'translate(-50%, -120%)';
+          tooltipEl.style.background = '#fff';
+          tooltipEl.style.border = '1px solid rgba(0,0,0,0.08)';
+          tooltipEl.style.padding = '8px 10px';
+          tooltipEl.style.borderRadius = '8px';
+          tooltipEl.style.boxShadow = '0 6px 18px rgba(16,24,40,0.08)';
+          tooltipEl.style.fontSize = '13px';
+          tooltipEl.style.color = '#0f172a';
+          tooltipEl.style.whiteSpace = 'nowrap';
+          tooltipEl.style.zIndex = 9999;
+
+          // data
+          const item = tooltipModel.dataPoints && tooltipModel.dataPoints[0];
+          if (!item) return;
+
+          const value = item.formattedValue || item.raw;
+          // sample formatting: $32,849 (use toLocaleString)
+          const formatted = '$' + Number(item.raw).toLocaleString();
+
+          // draw small dot marker inside tooltip (like screenshot)
+          tooltipEl.innerHTML = `
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:10px;height:10px;border-radius:6px;background:#2563EB;box-shadow:0 0 0 4px rgba(37,99,235,0.08)"></div>
+              <div style="font-weight:600">${formatted}</div>
+            </div>
+          `;
+
+          // calculate position: align to the hovered point
+          const canvasRect = context.chart.canvas.getBoundingClientRect();
+          const caretX = canvasRect.left + window.scrollX + tooltipModel.caretX;
+          const caretY = canvasRect.top + window.scrollY + tooltipModel.caretY;
+
+          tooltipEl.style.left = caretX + 'px';
+          tooltipEl.style.top = (caretY - 18) + 'px';
+        }
+      },
+
+      annotation: {
+        // dashed vertical marker line on 'Tue' (change 'value' to index or label)
+        annotations: {
+          markerLine: {
+            type: 'line',
+            scaleID: 'x',
+            value: 'Tue',                  // label at which line appears
+            borderColor: 'rgba(99,102,241,0.6)',
+            borderWidth: 2,
+            borderDash: [6,6],
+            // extend from top to bottom
+            drawTime: 'afterDatasetsDraw',
+            label: {
+              display: false
+            }
+          }
+        }
+      }
+    },
+
+    scales: {
+      x: {
+        grid: {
+          // vertical column style (light rectangles)
+          color: 'rgba(99,102,241,0.06)',
+          borderDash: [10,10],
+          drawBorder: false,
+          tickLength: 0
+        },
+        ticks: {
+          color: '#6B7280',
+          padding: 8
+        }
+      },
+      y: {
+        grid: {
+          color: 'rgba(99,102,241,0.03)',
+          drawBorder: false
+        },
+        ticks: {
+          color: '#6B7280',
+          callback: function(v) {
+            // convert to hours-like label in screenshot? Here keep currency small number formatting
+            // If your data are dollars, you can format: return '$' + v;
+            return v >= 1000 ? (v/1000) + 'k' : v;
+          },
+          padding: 6
+        }
+      }
+    },
+
+    interaction: {
+      mode: 'index',
+      intersect: false,
+      axis: 'x'
+    },
+
+    hover: {
+      mode: 'nearest',
+      intersect: true
+    }
+  }
+});
+
+/* ---------- make tooltip show on hover (simulate hover) ---------- */
+document.getElementById('salesChart').addEventListener('mousemove', function(evt) {
+  const points = salesChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+  if (points.length) {
+    salesChart.setActiveElements(points.map(p => ({ datasetIndex: p.datasetIndex, index: p.index })));
+    salesChart.tooltip.setActiveElements(points.map(p => ({ datasetIndex: p.datasetIndex, index: p.index })), {x: pX = points[0].element.x, y: points[0].element.y});
+    salesChart.update('none');
+  } else {
+    // clear tooltip
+    salesChart.tooltip.setActiveElements([], {x:0,y:0});
+    salesChart.update('none');
+  }
+});
+  
+  
+</script>
+
+<script src="script.js"></script>
+
+
+      
+</body>
+</html>
+
+
+
+
+
+
+<!-- npx tailwindcss -i ./style.css -o ./output.css --watch -->
