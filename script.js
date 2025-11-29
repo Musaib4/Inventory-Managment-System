@@ -71,9 +71,40 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderRows(displayedData);
 
+  // details 
+
+  const totalSales=document.getElementById('totalSales')
+  const totalShipment = document.getElementById('totalShipment')
+  const totalOrder=document.getElementById('totalOrder')
+  const avgDelTime = document.getElementById('avgDelTime')
+
+  // detail1
+  const totalValue = (num)=>{
+    if (!Array.isArray(num) || num.length === 0) return 0;
+    const sum = num.reduce((a, b) => a + Number(b.cost), 0);
+    totalSales.innerText = `$${sum}`
+  }
+  totalValue(displayedData)
+
+  // detail2
+
+  const delivered = displayedData.filter(item => item.status === "Shipped").length;
+  totalShipment.innerText = delivered
+
+
+  // detail3
+  totalOrder.innerText = displayedData.length
+
+  // detail4
+  const averageDT =()=>{
+    // const check = displayedData.filter(item => item.status === "Shipped");
+      const answer = displayedData.reduce((a, b) => {
+        const days = Number(b.delivery.match(/\d+/)[0]);
+        return a + days;
+      }, 0);
+      avgDelTime.innerText = `${answer} Days`
+  }
+  averageDT()
 
 });
-
-
-
 
