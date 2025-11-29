@@ -9,3 +9,14 @@
 .side{
     @apply ml-0
 }
+/* suggestion box basic styling */
+.suggestion-box {
+  @apply min-w-[220px];
+}
+
+/* Highlighted text inside the suggestion list */
+.suggestion-box .suggestion-item mark {
+  @apply bg-[#fff3bf] px-[2px] rounded-sm;
+}
+
+

@@ -31,6 +31,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   const data = await masterData();      // WAIT HERE
   const displayedData = [...data];      // SAFE COPY
   console.log(displayedData);
+  const tableBody = document.getElementById("tableBody");
+  const searchInput = document.getElementById("searchInput");
+
+  if (!tableBody) {
+    console.error("tableBody element not found (id='tableBody').");
+    return;
+  }
+  if (!searchInput) {
+    console.error("searchInput element not found (id='searchInput').");
+    return;
+  }
 
   function badgeClass(status) {
     if (status === 'Shipped') return 'text-green-600 bg-green-50';
@@ -70,6 +81,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   renderRows(displayedData);
+
+
+
+// Search Function of product table
+  searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase();
+
+      if (!value) {
+      // empty -> show all
+      renderRows(displayedData);
+      return;
+    }
+
+      const filtered = displayedData.filter(item =>
+        Object.values(item).some(val =>
+          String(val).toLowerCase().includes(value)
+        )
+      );
+      renderRows(filtered)
+  });
+  
 
   // details 
 
@@ -471,3 +503,5 @@ document.getElementById('salesChart').addEventListener('mousemove', function(evt
     salesChart.update('none');
   }
 });
+
+
