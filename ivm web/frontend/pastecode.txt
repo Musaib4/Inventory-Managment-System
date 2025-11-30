@@ -1,0 +1,157 @@
+
+latest order/////////////
+
+
+
+<div class="w-full max-w-sm p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
+    <div class="flex items-center justify-between mb-4">
+        <h5 class="text-xl font-semibold leading-none text-heading">Latest Customers</h5>
+        <a href="#" class="font-medium text-fg-brand hover:underline">View all</a>
+   </div>
+   <div class="flow-root">
+        <ul role="list" class="divide-y divide-default">
+            <li class="py-4 sm:py-4">
+                <div class="flex items-center gap-2">
+                    <div class="shrink-0">
+                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Neil image">
+                    </div>
+                    <div class="flex-1 min-w-0 ms-2">
+                        <p class="font-medium text-heading truncate">
+                            Neil Sims
+                        </p>
+                        <p class="text-sm text-body truncate">
+                            email@windster.com
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center font-medium text-heading">
+                        $320
+                    </div>
+                </div>
+            </li>
+            <li class="py-4 sm:py-4">
+                <div class="flex items-center gap-2">
+                    <div class="shrink-0">
+                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image">
+                    </div>
+                    <div class="flex-1 min-w-0 ms-2">
+                        <p class="font-medium text-heading truncate">
+                            Bonnie Green
+                        </p>
+                        <p class="text-sm text-body truncate">
+                            email@windster.com
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center font-medium text-heading">
+                        $3467
+                    </div>
+                </div>
+            </li>
+            <li class="py-4 sm:py-4">
+                <div class="flex items-center gap-2">
+                    <div class="shrink-0">
+                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-2.jpg" alt="Michael image">
+                    </div>
+                    <div class="flex-1 min-w-0 ms-2">
+                        <p class="font-medium text-heading truncate">
+                            Michael Gough
+                        </p>
+                        <p class="text-sm text-body truncate">
+                            email@windster.com
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center font-medium text-heading">
+                        $67
+                    </div>
+                </div>
+            </li>
+            <li class="py-4 sm:py-4">
+                <div class="flex items-center gap-2">
+                    <div class="shrink-0">
+                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-4.jpg" alt="Lana image">
+                    </div>
+                    <div class="flex-1 min-w-0 ms-2">
+                        <p class="font-medium text-heading truncate">
+                            Lana Byrd
+                        </p>
+                        <p class="text-sm text-body truncate">
+                            email@windster.com
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center font-medium text-heading">
+                        $367
+                    </div>
+                </div>
+            </li>
+            <li class="pt-4 pb-0">
+                <div class="flex items-center gap-2">
+                    <div class="shrink-0">
+                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Thomas image">
+                    </div>
+                    <div class="flex-1 min-w-0 ms-2">
+                        <p class="font-medium text-heading truncate">
+                            Thomas Lean
+                        </p>
+                        <p class="text-sm text-body truncate">
+                            email@windster.com
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center font-medium text-heading">
+                        $2367
+                    </div>
+                </div>
+            </li>
+        </ul>
+   </div>
+</div>
+
+
+////////product add form details //////////
+
+
+
+<form class="max-w-md mx-auto">
+  <div class="relative z-0 w-full mb-5 group">
+      <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+      <label for="floating_email" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email address</label>
+  </div>
+  <div class="relative z-0 w-full mb-5 group">
+      <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+      <label for="floating_password" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
+  </div>
+  <div class="relative z-0 w-full mb-5 group">
+      <input type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+      <label for="floating_repeat_password" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Confirm password</label>
+  </div>
+  <div class="grid md:grid-cols-2 md:gap-6">
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+        <label for="floating_first_name" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">First name</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+        <label for="floating_last_name" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Last name</label>
+    </div>
+  </div>
+  <div class="grid md:grid-cols-2 md:gap-6">
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+        <label for="floating_phone" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Phone number</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+        <label for="floating_company" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Company (Ex. Google)</label>
+    </div>
+  </div>
+  <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
+</form>
+
+
+///////// table///////////
+
+<div class="flex items-center">
+                        Color
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+

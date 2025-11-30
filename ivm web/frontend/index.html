@@ -19,22 +19,27 @@
       <button id="btn" class="border border-gray-400 p-1 rounded-lg text-gray-800 cursor-pointer hover:bg-gray-500 hover:text-white">⮜</button>
     </div>
 
-    <nav class="mt-6">
-      <ul class="font-semibold text-lg space-y-2">
-        <li  class="list-item-style active">Dashboard</li>
-        <li class="list-item-style">Logistics</li>
-        <li class="list-item-style">Orders</li>
-        <li class="list-item-style">Inventory</li>
-        <li class="list-item-style">Report</li>
-        <li class="list-item-style">Cashflow</li>
-        <li class="list-item-style">Customers</li>
-        <!-- divider -->
-        <li class="border-t border-gray-300 my-2"></li>
-        <li class="list-item-style">UserGuide</li>
-        <li class="list-item-style">FAQ</li>
-        <li class="list-item-style">Help Center</li>
-      </ul>
+      <nav class="mt-6">
+  <ul class="font-semibold flex flex-col text-lg space-y-2">
+
+    <a href="index.html" class="list-item-style active"  >Dashboard</a>
+    <a class="list-item-style" href="logistics.html">Logistics</a>
+    <a class="list-item-style" >Orders</a>
+    <a class="list-item-style" href="inventory.html">Inventory</a>
+    <a class="list-item-style" >Report</a>
+    <a class="list-item-style" >Cashflow</a>
+    <a class="list-item-style" >Customers</a>
+
+    <!-- divider -->
+    <li><hr class="border-t border-gray-300 my-2"></li>
+
+    <a class="list-item-style" >UserGuide</a>
+    <a class="list-item-style" >FAQ</a>
+    <a class="list-item-style" >Help Center</a>
+
+  </ul>
     </nav>
+
   </aside>
 
 
@@ -238,32 +243,24 @@
           <!-- segmented control -->
           <!-- Yearly dropdown (Tailwind) -->
           <div class="relative inline-block text-left">
-            <button id="rangeToggle"
+            <!-- <button id="rangeToggle"
                     aria-haspopup="true" aria-expanded="false"
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 shadow-sm text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-300">
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 shadow-sm text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-300"> -->
               <!-- calendar icon -->
-              <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.2" fill="transparent"/>
                 <path d="M16 3v4M8 3v4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-              </svg>
+              </svg> -->
 
               <!-- label (will update) -->
-              <span id="rangeLabel" class="text-sm">Yearly</span>
-
-              <!-- chevron -->
-              <svg id="rangeChevron" class="w-3 h-3 text-gray-400" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-
-            <!-- dropdown menu -->
-            <div id="rangeMenu" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-50">
-              <div class="py-1">
-                <button type="button" data-range="year" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Yearly</button>
-                <button type="button" data-range="month" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Monthly</button>
-                <button type="button" data-range="day" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Daily</button>
+              <!-- put this near your charts -->
+              <div id="chart-range-controls" style="display:flex;gap:8px;align-items:center;margin-bottom:12px">
+                <label style="font-weight:600;color:#374151">View:</label>
+                <button data-period="day" class="range-btn">Day</button>
+                <button data-period="week" class="range-btn">Week</button>
+                <button data-period="month" class="range-btn">Month</button>
+                <button data-period="year" class="range-btn">Year</button>
               </div>
-            </div>
           </div>
 
 
@@ -286,32 +283,13 @@
           <!-- segmented control -->
           <!-- Yearly dropdown (Tailwind) -->
           <div class="relative inline-block text-left">
-            <button id="rangeToggle"
-                    aria-haspopup="true" aria-expanded="false"
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-gray-200 shadow-sm text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-300">
-              <!-- calendar icon -->
-              <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.2" fill="transparent"/>
-                <path d="M16 3v4M8 3v4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-              </svg>
-
-              <!-- label (will update) -->
-              <span id="rangeLabel" class="text-sm">Yearly</span>
-
-              <!-- chevron -->
-              <svg id="rangeChevron" class="w-3 h-3 text-gray-400" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-
-            <!-- dropdown menu -->
-            <div id="rangeMenu" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-50">
-              <div class="py-1">
-                <button type="button" data-range="year" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Yearly</button>
-                <button type="button" data-range="month" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Monthly</button>
-                <button type="button" data-range="day" class="range-item w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Daily</button>
-              </div>
-            </div>
+            <div id="chart-range-controls" style="display:flex;gap:8px;align-items:center;margin-bottom:12px">
+                <label style="font-weight:600;color:#374151">View:</label>
+                <button data-period="day" class="range-btn">Day</button>
+                <button data-period="week" class="range-btn">Week</button>
+                <button data-period="month" class="range-btn">Month</button>
+                <button data-period="year" class="range-btn">Year</button>
+              </div>            
           </div>
 
           
