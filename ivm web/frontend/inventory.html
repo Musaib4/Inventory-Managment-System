@@ -11,7 +11,7 @@
 </head>
 <body class="bg-gray-100 overflow-x-hidden">
 
-    <aside class="bg-white w-full z-50  md:w-64 p-4 h-screen overflow-y-auto fixed sidebar" id="sidebar">
+    <aside class="bg-white  w-full z-50  md:w-64 p-4 h-screen overflow-y-auto fixed sidebar" id="sidebar">
     <!-- logo + btn -->
     <div class="flex justify-between">
       <h1 class="text-2xl font-semibold">Invent-ro</h1>
@@ -89,208 +89,496 @@
 
     <!-- add to inventory -->
       <div class=" flex flex-col  sm:flex-row md:gap-0.5 ml-5 mr-5 rounded-md p-4 ">
-        <div id="newProducts" class=" bg-white w-full   p-4 justify-center text-center md:rounded-2xl">
+        <div id="newDetail" class=" bg-white w-full   p-4 justify-center text-center md:rounded-2xl">
             <h1 class="mb-4 text-3xl font-bold text-heading md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">ADD Products</span> In Inventory</h1>
-            <button type="button" class="cursor-pointer text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5  text-center leading-5">Add To Inventory</button>
+            <button id="inventoryButton" type="button" class="cursor-pointer text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5  text-center leading-5">Add To Inventory</button>
         </div>
+
+            <!-- form -->
+
+            <form class="max-w-md hidden mx-auto" id="inventoryForm">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="trackingId" id="trackingId" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+                    <label for="trackingId" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tracking ID</label>
+                </div>
+
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="destination" id="destination" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+                    <label for="destination" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Destination</label>
+                </div>
+
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="customer" id="customer" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+                    <label for="customer" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Customer</label>
+                </div>
+
+
+                <div class="grid md:grid-cols-2 md:gap-6">
+                    <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="deliveryTime" id="deliveryTime" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+                    <label for="deliveryTime" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Delivery Time</label>
+                    </div>
+
+                    <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="carrier" id="carrier" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+                    <label for="carrier" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Carrier</label>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 md:gap-6">
+                    <div class="relative z-0 w-full mb-5 group">
+                    <input type="number" step="0.01" name="cost" id="cost" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
+                    <label for="cost" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Cost (₹)</label>
+                    </div>
+
+                    <div class="relative z-0 w-full mb-5 group">
+                    <select name="status" id="status" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" required>
+                        <option value="" disabled selected hidden></option>
+                        <option>On Delivery</option>
+                        <option>Shipped</option>
+                        <option>Pending</option>
+                        <option>Delivered</option>
+                    </select>
+                    <label for="status" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Status</label>
+                    </div>
+
+                </div>
+
+                    <!-- Drag & drop image (no preview) -->
+                    <div class="relative z-0 w-full mb-6 group">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Product Image (max 2 MB)</label>
+
+                    <div id="dropArea" tabindex="0"
+                        class="group relative flex items-center justify-center gap-3 p-4 border-2 border-dashed rounded-md cursor-pointer
+                                border-default-medium bg-transparent text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                d="M7 16v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2M16 11l-4-4m0 0L8 11m4-4v12"></path>
+                        </svg>
+
+                        <div id="dropText" class="text-center">
+                        <div class="text-sm font-medium text-gray-800">Drag & drop an image here</div>
+                        <div class="text-xs text-gray-500">or browse to choose a file</div>
+                        </div>
+
+                        <!-- hidden file input (fallback) -->
+                        <input id="productImageInput" name="productImage" type="file" accept="image/*"
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                    </div>
+
+                    <!-- small status text (filename or error) -->
+                    <p id="fileStatus" class="mt-2 text-xs text-gray-500"></p>
+                    <p id="fileError" class="mt-2 text-xs text-red-600 hidden"></p>
+                    </div>
+
+                <div class="flex items-center justify-end gap-3">
+                    <button type="reset" class="px-4 py-2 bg-blue-500 cursor-pointer rounded-md border border-gray-200">Reset</button>
+                    <button type="submit" class="text-black rounded-md  bg-blue-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium cursor-pointer leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
+                </div>
+            </form>
       </div>
 
     <!-- latest Products -->
 
-    <div class="w-full max-w-sm p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
-      <div class="flex items-center justify-between mb-4">
-          <h5 class="text-xl font-semibold leading-none text-heading">Latest Customers</h5>
-          <a href="#" class="font-medium text-fg-brand hover:underline">View all</a>
-      </div>
-      <div class="flow-root">
-            <ul role="list" class="divide-y divide-default">
-                <li class="py-4 sm:py-4">
-                    <div class="flex items-center gap-2">
-                        <div class="shrink-0">
-                            <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Neil image">
-                        </div>
-                        <div class="flex-1 min-w-0 ms-2">
-                            <p class="font-medium text-heading truncate">
-                                Neil Sims
-                            </p>
-                            <p class="text-sm text-body truncate">
-                                email@windster.com
-                            </p>
-                        </div>
-                        <div class="inline-flex items-center font-medium text-heading">
-                            $320
-                        </div>
+            <section class="container mt-10 px-4 mx-auto">
+  <h2 class="text-lg font-medium text-gray-800 dark:text-black">Latest Orders</h2>
+  <p class="mt-1 text-sm text-black dark:text-black">These companies have purchased in the last 12 months.</p>
+
+  <div class="flex flex-col mt-6">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+        <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+
+          <!-- TABLE (becomes cards on small screens) -->
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-50 dark:bg-gray-800">
+              <tr class="hidden sm:table-row"> <!-- header shown only on sm+ -->
+                <th class="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Tracking ID
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
                     </div>
-                </li>
-                <li class="py-4 sm:py-4">
-                    <div class="flex items-center gap-2">
-                        <div class="shrink-0">
-                            <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image">
-                        </div>
-                        <div class="flex-1 min-w-0 ms-2">
-                            <p class="font-medium text-heading truncate">
-                                Bonnie Green
-                            </p>
-                            <p class="text-sm text-body truncate">
-                                email@windster.com
-                            </p>
-                        </div>
-                        <div class="inline-flex items-center font-medium text-heading">
-                            $3467
-                        </div>
+                </th>
+                <th class="px-12 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Destination
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
                     </div>
-                </li>
-                <li class="py-4 sm:py-4">
-                    <div class="flex items-center gap-2">
-                        <div class="shrink-0">
-                            <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-2.jpg" alt="Michael image">
-                        </div>
-                        <div class="flex-1 min-w-0 ms-2">
-                            <p class="font-medium text-heading truncate">
-                                Michael Gough
-                            </p>
-                            <p class="text-sm text-body truncate">
-                                email@windster.com
-                            </p>
-                        </div>
-                        <div class="inline-flex items-center font-medium text-heading">
-                            $67
-                        </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Customer
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
                     </div>
-                </li>
-                <li class="py-4 sm:py-4">
-                    <div class="flex items-center gap-2">
-                        <div class="shrink-0">
-                            <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-4.jpg" alt="Lana image">
-                        </div>
-                        <div class="flex-1 min-w-0 ms-2">
-                            <p class="font-medium text-heading truncate">
-                                Lana Byrd
-                            </p>
-                            <p class="text-sm text-body truncate">
-                                email@windster.com
-                            </p>
-                        </div>
-                        <div class="inline-flex items-center font-medium text-heading">
-                            $367
-                        </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Delivery Time
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
                     </div>
-                </li>
-                <li class="pt-4 pb-0">
-                    <div class="flex items-center gap-2">
-                        <div class="shrink-0">
-                            <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Thomas image">
-                        </div>
-                        <div class="flex-1 min-w-0 ms-2">
-                            <p class="font-medium text-heading truncate">
-                                Thomas Lean
-                            </p>
-                            <p class="text-sm text-body truncate">
-                                email@windster.com
-                            </p>
-                        </div>
-                        <div class="inline-flex items-center font-medium text-heading">
-                            $2367
-                        </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Carrier
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
                     </div>
-                </li>
-            </ul>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Cost
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Status
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Date
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="relative py-3.5 px-4"><span class="sr-only">Edit</span></th>
+              </tr>
+            </thead>
+
+            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+              <!-- Row 1 -->
+              <tr class="block sm:table-row">
+                <!-- Tracking ID -->
+                <td class="block sm:table-cell px-4 py-4 text-sm font-medium whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div>
+                      <h2 class="font-medium text-gray-800 dark:text-white">Catalog</h2>
+                      <p class="text-sm font-normal text-gray-600 dark:text-gray-400">catalogapp.io</p>
+                    </div>
+                    <!-- mobile label -->
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Tracking id</div>
+                  </div>
+                </td>
+
+                <!-- Destination -->
+                <td class="block sm:table-cell px-12 py-4 text-sm font-medium whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">Customer</div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Destination</div>
+                  </div>
+                </td>
+
+                <!-- Customer / description -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="flex items-start justify-between sm:block">
+                    <div>
+                      <h4 class="text-gray-700 dark:text-gray-200">Content curating app</h4>
+                      <p class="text-gray-500 dark:text-gray-400">Brings all your news into one place</p>
+                    </div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Customer</div>
+                  </div>
+                </td>
+
+                <!-- Delivery Time (progress bar used in original) -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="text-sm text-gray-600">7days</div>
+                </td>
+
+                <!-- Carrier (avatars) -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div class="flex items-center -space-x-1">
+                      <img class="object-cover w-6 h-6 border-2 border-white rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&q=80" alt="">
+                      <img class="object-cover w-6 h-6 border-2 border-white rounded-full" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80" alt="">
+                      <p class="flex items-center justify-center w-6 h-6 text-xs text-blue-600 bg-blue-100 border-2 border-white rounded-full">+4</p>
+                    </div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Carrier</div>
+                  </div>
+                </td>
+
+                <!-- Cost (hide on very small screens if you want) -->
+                <td class="hidden sm:table-cell px-4 py-4 text-sm whitespace-nowrap"> 
+                  <div class="text-sm text-gray-800">₹999</div>
+                </td>
+
+                <!-- Status -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60">Customer</div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Status</div>
+                  </div>
+                </td>
+
+                <!-- Date -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div class="text-sm text-gray-600">2025-11-30</div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Date</div>
+                  </div>
+                </td>
+
+                <!-- Actions -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-nowrap text-right">
+                  <button class="px-1 py-1 text-gray-500 rounded-lg hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Duplicate rows (keep same pattern) -->
+              <!-- You can copy the <tr class="block sm:table-row"> ... </tr> block for each row -->
+              <!-- ... -->
+            </tbody>
+          </table>
+
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- pagination (responsive) -->
+  <div class="flex items-center justify-between mt-6">
+    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12l3.75-3.75"/></svg>
+      <span class="ml-2">Previous</span>
+    </a>
+
+    <div class="flex items-center gap-x-2">
+      <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md bg-blue-100/60">1</a>
+      <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100 hidden sm:inline">2</a>
+      <span class="px-2 py-1 text-sm text-gray-500 rounded-md">...</span>
+      <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100 hidden sm:inline">12</a>
+    </div>
+
+    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100">
+      <span class="mr-2">Next</span>
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12l-3.75 3.75"/></svg>
+    </a>
+  </div>
+        </section>
+
+    <!-- All Products -->
+
+    <section class="container mt-10 px-4 mx-auto">
+  <h2 class="text-lg font-medium text-gray-800 dark:text-black">All Orders</h2>
+  <p class="mt-1 text-sm text-black dark:text-black">These companies have purchased in the last 12 months.</p>
+
+  <div class="flex flex-col mt-6">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+        <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+
+          <!-- TABLE (becomes cards on small screens) -->
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-50 dark:bg-gray-800">
+              <tr class="hidden sm:table-row"> <!-- header shown only on sm+ -->
+                <th class="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Tracking ID
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="px-12 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Destination
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Customer
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Delivery Time
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Carrier
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Cost
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Status
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                    <div class="flex items-center">
+                            Date
+                        <a href="#">
+                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
+                        </a>
+                    </div>
+                </th>
+                <th class="relative py-3.5 px-4"><span class="sr-only">Edit</span></th>
+              </tr>
+            </thead>
+
+            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+              <!-- Row 1 -->
+              <tr class="block sm:table-row">
+                <!-- Tracking ID -->
+                <td class="block sm:table-cell px-4 py-4 text-sm font-medium whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div>
+                      <h2 class="font-medium text-gray-800 dark:text-white">Catalog</h2>
+                      <p class="text-sm font-normal text-gray-600 dark:text-gray-400">catalogapp.io</p>
+                    </div>
+                    <!-- mobile label -->
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Tracking id</div>
+                  </div>
+                </td>
+
+                <!-- Destination -->
+                <td class="block sm:table-cell px-12 py-4 text-sm font-medium whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">Customer</div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Destination</div>
+                  </div>
+                </td>
+
+                <!-- Customer / description -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="flex items-start justify-between sm:block">
+                    <div>
+                      <h4 class="text-gray-700 dark:text-gray-200">Content curating app</h4>
+                      <p class="text-gray-500 dark:text-gray-400">Brings all your news into one place</p>
+                    </div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Customer</div>
+                  </div>
+                </td>
+
+                <!-- Delivery Time (progress bar used in original) -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="text-sm text-gray-600">7days</div>
+                </td>
+
+                <!-- Carrier (avatars) -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div class="flex items-center -space-x-1">
+                      <img class="object-cover w-6 h-6 border-2 border-white rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&q=80" alt="">
+                      <img class="object-cover w-6 h-6 border-2 border-white rounded-full" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80" alt="">
+                      <p class="flex items-center justify-center w-6 h-6 text-xs text-blue-600 bg-blue-100 border-2 border-white rounded-full">+4</p>
+                    </div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Carrier</div>
+                  </div>
+                </td>
+
+                <!-- Cost (hide on very small screens if you want) -->
+                <td class="hidden sm:table-cell px-4 py-4 text-sm whitespace-nowrap"> 
+                  <div class="text-sm text-gray-800">₹999</div>
+                </td>
+
+                <!-- Status -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60">Customer</div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Status</div>
+                  </div>
+                </td>
+
+                <!-- Date -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-normal">
+                  <div class="flex items-center justify-between sm:block">
+                    <div class="text-sm text-gray-600">2025-11-30</div>
+                    <div class="sm:hidden text-sm text-gray-500 mt-2">Date</div>
+                  </div>
+                </td>
+
+                <!-- Actions -->
+                <td class="block sm:table-cell px-4 py-4 text-sm whitespace-nowrap text-right">
+                  <button class="px-1 py-1 text-gray-500 rounded-lg hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Duplicate rows (keep same pattern) -->
+              <!-- You can copy the <tr class="block sm:table-row"> ... </tr> block for each row -->
+              <!-- ... -->
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pagination (responsive) -->
+  <div class="flex items-center justify-between mt-6">
+    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12l3.75-3.75"/></svg>
+      <span class="ml-2">Previous</span>
+    </a>
+
+    <div class="flex items-center gap-x-2">
+      <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md bg-blue-100/60">1</a>
+      <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100 hidden sm:inline">2</a>
+      <span class="px-2 py-1 text-sm text-gray-500 rounded-md">...</span>
+      <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100 hidden sm:inline">12</a>
+    </div>
+
+    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 bg-white border rounded-md hover:bg-gray-100">
+      <span class="mr-2">Next</span>
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12l-3.75 3.75"/></svg>
+    </a>
+  </div>
+        </section>
+
 
   </main>
 
 
 
-<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
-    <table class="w-full text-sm text-left rtl:text-right text-body">
-        <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium">
-            <tr>
-                <th scope="col" class="px-6 py-3 font-medium">
-                    Product name
-                </th>
-                <th scope="col" class="px-6 py-3 font-medium">
-                    
-                </th>
-                <th scope="col" class="px-6 py-3 font-medium">
-                    <div class="flex items-center">
-                        Category
-                        <a href="#">
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
-                        </a>
-                    </div>
-                </th>
-                <th scope="col" class="px-6 py-3 font-medium">
-                    <div class="flex items-center">
-                        Price
-                        <a href="#">
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
-                        </a>
-                    </div>
-                </th>
-                <th scope="col" class="px-6 py-3 font-medium">
-                    <span class="sr-only">Edit</span>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="bg-neutral-primary-soft border-b  border-default">
-                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-neutral-primary-soft border-b  border-default">
-                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Microsoft Surface Pro
-                </th>
-                <td class="px-6 py-4">
-                    White
-                </td>
-                <td class="px-6 py-4">
-                    Laptop PC
-                </td>
-                <td class="px-6 py-4">
-                    $1999
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-neutral-primary-soft">
-                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Magic Mouse 2
-                </th>
-                <td class="px-6 py-4">
-                    Black
-                </td>
-                <td class="px-6 py-4">
-                    Accessories
-                </td>
-                <td class="px-6 py-4">
-                    $99
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Edit</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
   
-
   <script type="module" src="script.js"></script>
+  <script type="module" src="inventory.js"></script>
 </body>
 </html>
