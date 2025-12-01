@@ -24,14 +24,20 @@ openbtn.addEventListener('click',()=>{
 
 
 const masterData = async () => {
-  const response = await fetch('http://localhost:3000/api/data/masterdata');
+  const response = await fetch('http://localhost:3000/api/order/new');
   const data = await response.json();
   return data;
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await masterData();      // WAIT HERE
-  const displayedData = [...data];      // SAFE COPY
+  console.log("RAW API response:", data);
+
+  const displayedData = Array.isArray(data)
+    ? data
+    : Array.isArray(data?.data)
+      ? data.data
+      : [];      // SAFE COPY
   console.log(displayedData);
   const tableBody = document.getElementById("tableBody");
   const searchInput = document.getElementById("searchInput");

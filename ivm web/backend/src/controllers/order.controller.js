@@ -18,3 +18,12 @@ export async function createOrderHandler(req, res, next) {
     next(err);
   }
 }
+
+export async function getOrdersHandler(req, res, next) {
+  try {
+    const data = await orderService.getOrders();
+    return res.status(200).json({ data });
+  } catch (err) {
+    next(err);
+  }
+}
