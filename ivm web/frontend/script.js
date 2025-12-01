@@ -1,3 +1,5 @@
+// SIDEBAR
+
 const sidebar =document.getElementById('sidebar')
 const sidebtn = document.getElementById('btn')
 const mainContent = document.getElementById('main')
@@ -22,7 +24,7 @@ openbtn.addEventListener('click',()=>{
 
 
 const masterData = async () => {
-  const response = await fetch('http://localhost:3000/masterdata');
+  const response = await fetch('http://localhost:3000/api/data/masterdata');
   const data = await response.json();
   return data;
 };
@@ -286,7 +288,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 })();
 
 const chart1Data = async () => {
-      const res = await fetch("http://localhost:3000/chart1data");
+      const res = await fetch("http://localhost:3000/api/data/chart1data");
       const data  = await res.json();
       return data;
 }
@@ -315,7 +317,7 @@ const chartSValue = (num)=>{
 
 
 const chartData = async () => {
-      const res = await fetch("http://localhost:3000/chart2data");
+      const res = await fetch("http://localhost:3000/api/data/chart2data");
       const data  = await res.json();
       return data;
 
