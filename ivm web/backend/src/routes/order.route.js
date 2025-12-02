@@ -1,11 +1,14 @@
 import { Router } from "express";
 import { createOrderHandler } from "../controllers/order.controller.js";
 import { getOrdersHandler } from "../controllers/order.controller.js";
+import { getDateController } from "../controllers/order.controller.js";
+
 
 
 const router = Router();
 
-router.post("/new", createOrderHandler);
-router.get("/new", getOrdersHandler); 
+router.post("/", createOrderHandler);
+// router.get("/", getOrdersHandler); 
+router.get("/", getDateController);
 
 export default router;

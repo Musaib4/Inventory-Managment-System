@@ -1,5 +1,6 @@
 import * as orderService from "../services/order.service.js";
 
+
 export async function createOrderHandler(req, res, next) {
   try {
     const payload = req.body;
@@ -25,5 +26,14 @@ export async function getOrdersHandler(req, res, next) {
     return res.status(200).json({ data });
   } catch (err) {
     next(err);
+  }
+}
+
+export async function getDateController(req, res) {
+  try {
+    const result = await orderService.getByDate(req.query);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 }

@@ -24,7 +24,7 @@ openbtn.addEventListener('click',()=>{
 
 
 const masterData = async () => {
-  const response = await fetch('http://localhost:3000/api/order/new');
+  const response = await fetch('http://localhost:3000/api/order/');
   const data = await response.json();
   return data;
 };
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function rowHtml(item) {
     return `
-    <div class="grid grid-cols-7 items-center gap-4 px-4 py-4">
+    <div class="grid grid-cols-8 items-center gap-2 px-4 py-4">
       <div class="text-sm font-medium text-gray-800">${item.id}</div>
       <div class="flex items-center gap-2">
         <img src="${item.destFlag}" alt="${item.dest}" class="w-5 h-5 rounded-sm" />
@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div>
         <span class="${badgeClass(item.status)} inline-block px-3 py-1 rounded-full text-xs font-semibold">${item.status}</span>
       </div>
+      <div class="text-sm text-gray-600">${item.createdAt}</div>
     </div>
     `;
   }

@@ -157,7 +157,7 @@ inventoryForm.addEventListener('submit', async (e) => {
   };
 
   try {
-    const res = await fetch(`${baseUrl}/api/order/new`, {
+    const res = await fetch(`${baseUrl}/api/order/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
