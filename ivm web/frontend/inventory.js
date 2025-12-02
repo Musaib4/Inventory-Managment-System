@@ -142,7 +142,10 @@ inventoryButton.addEventListener('click',()=>{
     inventoryForm.classList.toggle('hidden')
 })
 
+
 const baseUrl = "http://localhost:3000"; // put in env for production
+
+// adds the data via form 
 
 inventoryForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -172,3 +175,126 @@ inventoryForm.addEventListener('submit', async (e) => {
     alert('Error: ' + err.message);
   }
 });
+
+// latest Products
+
+const orderData = async () => {
+  const response = await fetch(`${baseUrl}/api/order`);
+  const data = await response.json();
+  return data;
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const data = await orderData();      // WAIT HERE
+  console.log("RAW API response:", data);
+
+  const displayedData = Array.isArray(data)
+    ? data
+    : Array.isArray(data?.data)
+      ? data.data
+      : [];      // SAFE COPY
+  console.log(displayedData);
+  const tableBody = document.getElementById("tableBody");
+  // const searchInput = document.getElementById("searchInput");
+
+  if (!tableBody) {
+    console.error("tableBody element not found (id='tableBody').");
+    return;
+  }
+  // if (!searchInput) {
+  //   console.error("searchInput element not found (id='searchInput').");
+  //   return;
+  // }
+
+  function badgeClass(status) {
+    if (status === 'Shipped') return 'text-green-600 bg-green-50';
+    if (status === 'Pending') return 'text-yellow-600 bg-yellow-50';
+    if (status === 'On Delivery') return 'text-blue-600 bg-blue-50';
+    return 'text-gray-600 bg-gray-50';
+  }
+
+  function rowHtml(item) {
+    return `
+    <tr class="block sm:table-row">
+    <!-- Tracking ID -->
+    <td class="block sm:table-cell px-4 py-4 align-top">
+      <div class="flex items-center justify-between sm:block">
+        <div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">${item.id}</div>
+        </div>
+        <div class="sm:hidden text-xs text-gray-500 mt-2">Tracking ID</div>
+      </div>
+    </td>
+
+    <!-- Destination -->
+    <td class="block sm:table-cell px-6 py-4 align-top">
+      <div class="flex items-center justify-between sm:block">
+        <div class="inline-block px-3 py-1 text-sm rounded-full bg-emerald-100/60 text-emerald-700 dark:bg-gray-800">${item.dest}</div>
+        <div class="sm:hidden text-xs text-gray-500 mt-2">Destination</div>
+      </div>
+    </td>
+
+    <!-- Customer (title + subtitle on small screens stacked) -->
+    <td class="block sm:table-cell px-4 py-4 align-top">
+      <div class="flex items-start justify-between sm:block">
+        <div>
+          <div class="text-sm font-medium text-gray-800 dark:text-gray-200">${item.customer}</div>
+        <div class="sm:hidden text-xs text-gray-500 mt-2">Customer</div>
+      </div>
+    </td>
+
+    <!-- Delivery -->
+    <td class="block sm:table-cell px-4 py-4 align-top">
+      <div class="text-sm text-gray-600 dark:text-gray-400">${item.delivery}</div>
+    </td>
+
+    <!-- Carrier -->
+    <td class="block sm:table-cell px-4 py-4 align-top">
+      <div class="flex items-center gap-2">
+        <div class="flex -space-x-1 items-center">
+          <!-- optional avatars; if you have images, replace the circles -->
+          <div class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs border-2 border-white">${item.carrier}</div>
+        </div>
+      </div>
+    </td>
+
+    <!-- Cost -->
+    <td class="hidden sm:table-cell px-4 py-4 align-top whitespace-nowrap">
+      <div class="text-sm text-gray-900 dark:text-white">${item.cost}</div>
+    </td>
+
+    <!-- Status -->
+    <td class="block sm:table-cell px-4 py-4 align-top">
+      <div>
+        <span class="inline-block px-3 py-1 text-sm rounded-full ">${item.status}</span>
+      </div>
+    </td>
+
+    <!-- Date -->
+    <td class="block sm:table-cell px-4 py-4 align-top">
+      <div class="text-sm text-gray-600 dark:text-gray-400">${item.createdAt}</div>
+    </td>
+
+    <!-- Actions -->
+    <td class="block sm:table-cell px-4 py-4 align-top text-right">
+      <button aria-label="More actions" class="inline-flex items-center justify-center w-8 h-8 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"/>
+        </svg>
+      </button>
+    </td>
+  </tr>
+    `;
+  }
+  rowHtml(displayedData)
+
+  function renderRows(list) {
+    tableBody.innerHTML = list.map(rowHtml).join('');
+  }
+
+  renderRows(displayedData);
+
+
+
+});
+// all products
