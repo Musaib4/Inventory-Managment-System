@@ -178,6 +178,10 @@ inventoryForm.addEventListener('submit', async (e) => {
 
 // All Orders
 
+let current_page = 1;
+let limitPerPage = 2;
+
+
 const orderData = async () => {
   const response = await fetch(`${baseUrl}/api/order`);
   const data = await response.json();
@@ -297,13 +301,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 });
+
+
 // Latest  Orders
 
-let current_page = 1;
+
+
 
 
 const latestOrderData = async () => {
-  const response = await fetch(`${baseUrl}/api/order/date?latest=&page=${current_page}&limit=${2}`);
+  const response = await fetch(`${baseUrl}/api/order/date?latest=&page=${current_page}&limit=${limitPerPage}`);
   const data = await response.json();
   return data;
 };
@@ -320,11 +327,45 @@ document.addEventListener("DOMContentLoaded", async () => {
   const page1El = document.getElementById('page1');
   const page2El = document.getElementById('page2');
   const page3El = document.getElementById('page3');
+  const previousPage1 = document.getElementById('previousPage1');
+  const previousPage2 = document.getElementById('previousPage2');
   let max_pages = 0;
+
+  function limit(){
+  const limitBtn = document.getElementById("limitBtn");
+  const limitMenu = document.getElementById("limitMenu");
+  const limitValue = document.getElementById("limitValue");
+
+    // Toggle dropdown
+    limitBtn.addEventListener("click", () => {
+        limitMenu.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!limitBtn.contains(e.target) && !limitMenu.contains(e.target)) {
+            limitMenu.classList.add("hidden");
+        }
+    });
+
+    document.querySelectorAll("#limitMenu button").forEach(btn => {
+        btn.addEventListener("click", async () => {
+            limitPerPage = Number(btn.dataset.limit);
+            limitValue.innerText = limitPerPage;
+            limitMenu.classList.add("hidden");
+
+            // Reload your data with new limit
+            current_page = 1;      // reset to first page
+            await load();          // your existing load() function
+        });
+    });
+  }
+
+  limit()
 
   function updatePaginationDisplay(totalRecords, limitPerPage) {
     max_pages = Math.ceil(totalRecords / limitPerPage);
-    totalPagination.innerText =max_pages;
+    if (totalPagination) totalPagination.innerText = `${current_page} / ${max_pages}`;
+
 
     const setPageActive = (el, isActive) => {
         if (!el) return;
@@ -335,7 +376,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Reset/clear active classes
-    [page1El, page2El, page3El].forEach(el => {
+    [page1El, page2El, page3El,previousPage1,previousPage2].forEach(el => {
       setPageActive(el, false);
     });
 
@@ -364,6 +405,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       page3El.style.display = isVisible ? 'inline' : 'none';
       setPageActive(page3El, pageNum === current_page);
     }
+    if (previousPage1) {
+      const pageNum = current_page - 1;
+      const isVisible = pageNum >= 1 && pageNum <= max_pages;
+      previousPage1.innerText = isVisible ? pageNum : '';
+      previousPage1.dataset.page = String(pageNum);
+      previousPage1.style.display = isVisible ? 'inline' : 'none';
+      setPageActive(previousPage1, pageNum === current_page);
+    }
+    if (previousPage2) {
+      const pageNum = current_page - 2;
+      const isVisible = pageNum >= 1 && pageNum <= max_pages;
+      previousPage2.innerText = isVisible ? pageNum : '';
+      previousPage2.dataset.page = String(pageNum);
+      previousPage2.style.display = isVisible ? 'inline' : 'none';
+      setPageActive(previousPage2, pageNum === current_page);
+    }
 
     // Control button states
     previousBtn.disabled = current_page === 1;
@@ -421,7 +478,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   previousBtn.addEventListener('click', async()=>{
     if (current_page > 1) {
       current_page -= 1;
-      await load();
     }
   await load()
   })
@@ -435,6 +491,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (page3El) {
     page3El.addEventListener('click', () => handlePageClick(page3El));
   }
+    if (previousPage1) previousPage1.addEventListener('click', () => handlePageClick(previousPage1));
+    if (previousPage2) previousPage2.addEventListener('click', () => handlePageClick(previousPage2));
+
 
   await load();
 
