@@ -303,39 +303,87 @@ let current_page = 1;
 
 
 const latestOrderData = async () => {
-  const response = await fetch(`${baseUrl}/api/order/date?latest=&page=${current_page}&limit=${4}`);
+  const response = await fetch(`${baseUrl}/api/order/date?latest=&page=${current_page}&limit=${2}`);
   const data = await response.json();
   return data;
 };
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const data = await latestOrderData();      // WAIT HERE
-  console.log("Latest RAW API response:", data);
-  console.log(data.total)
+  const data = await latestOrderData();
+  console.log("Current page used for API call:", current_page);
+
   const latestTableBody = document.getElementById("latestTableBody");
   const nextBtn = document.getElementById('nextBtn');
   const previousBtn = document.getElementById('previousBtn');
   const totalPagination = document.getElementById('totalPagination');
+  const page1El = document.getElementById('page1');
+  const page2El = document.getElementById('page2');
+  const page3El = document.getElementById('page3');
+  let max_pages = 0;
 
   function updatePaginationDisplay(totalRecords, limitPerPage) {
-    const max_pages = Math.ceil(totalRecords / limitPerPage);
-    totalPagination.innerText = totalRecords;
-    
-    // Check if the page elements exist before trying to update them
-    const page1El = document.getElementById('page1');
-    const page2El = document.getElementById('page2');
-    const page3El = document.getElementById('page3');
+    max_pages = Math.ceil(totalRecords / limitPerPage);
+    totalPagination.innerText =max_pages;
 
-    if (page1El) page1El.innerText = current_page;
-    
-    // Safely calculate and display next pages without modifying current_page
-    if (page2El) page2El.innerText = (current_page + 1) > max_pages ? '' : current_page + 1;
-    if (page3El) page3El.innerText = (current_page + 2) > max_pages ? '' : current_page + 2;
+    const setPageActive = (el, isActive) => {
+        if (!el) return;
+        el.classList.toggle('text-blue-500', isActive);
+        el.classList.toggle('bg-blue-100/60', isActive);
+        el.classList.toggle('text-gray-500', !isActive);
+        el.classList.toggle('hover:bg-gray-100', !isActive);
+    }
+
+    // Reset/clear active classes
+    [page1El, page2El, page3El].forEach(el => {
+      setPageActive(el, false);
+    });
+
+    if (page1El) {
+        const pageNum = current_page;
+        page1El.innerText = pageNum;
+        page1El.dataset.page = pageNum; // 👈 CRITICAL: Set the data attribute
+        setPageActive(page1El, pageNum === current_page);
+    }
+    
+    if (page2El) {
+      const pageNum = current_page + 1;
+      const isVisible = pageNum <= max_pages;
+      
+      page2El.innerText = isVisible ? pageNum : '';
+      page2El.dataset.page = pageNum; // 👈 CRITICAL: Set the data attribute
+      page2El.style.display = isVisible ? 'inline' : 'none';
+      setPageActive(page2El, pageNum === current_page);
+    }
+    if (page3El) {
+      const pageNum = current_page + 2;
+      const isVisible = pageNum <= max_pages;
+      
+      page3El.innerText = isVisible ? pageNum : '';
+      page3El.dataset.page = pageNum; // 👈 CRITICAL: Set the data attribute
+      page3El.style.display = isVisible ? 'inline' : 'none';
+      setPageActive(page3El, pageNum === current_page);
+    }
 
     // Control button states
     previousBtn.disabled = current_page === 1;
     nextBtn.disabled = current_page >= max_pages;
+  }
+
+  async function handlePageClick(element) {
+    // Get the page number from the reliable data attribute
+    const pageNum = element.dataset.page; 
+    
+    const pageNumber = parseInt(pageNum);
+    
+    // Check if the link is a valid, visible page number
+    if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > max_pages) {
+        console.warn('Invalid page number clicked:', pageNum);
+        return;
+    }
+    
+    current_page = pageNumber;
+    await load();
   }
 
   const displayedData = Array.isArray(data)
@@ -375,12 +423,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       current_page -= 1;
       await load();
     }
+  await load()
   })
+
+  if (page1El) {
+    page1El.addEventListener('click', () => handlePageClick(page1El));
+  }
+  if (page2El) {
+    page2El.addEventListener('click', () => handlePageClick(page2El));
+  }
+  if (page3El) {
+    page3El.addEventListener('click', () => handlePageClick(page3El));
+  }
 
   await load();
 
 
-  totalPagination.innerText = data.total
+  // totalPagination.innerText = data.total
 
 
   if (!latestTableBody) {
