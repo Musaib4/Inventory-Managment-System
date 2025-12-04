@@ -80,11 +80,45 @@
         </button>
 
 
-        <img
-        src="https://docs.material-tailwind.com/img/face-2.jpg"
-        alt="avatar"
-        class="relative inline-block h-8 cursor-pointer w-8 !rounded-full  object-cover object-center"
-    />
+        <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <div class="flex items-center justify-between">
+      
+      <div class="flex items-center">
+          <div class="flex items-center ms-3">
+            <div>
+              <button type="button" class="flex cursor-pointer text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                <span class="sr-only">Open user menu</span>
+                <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+              </button>
+            </div>
+            <div class="z-50 hidden bg-white border-none  rounded-2xl shadow-lg w-44" id="dropdown-user">
+              <div class="px-4 py-3 border-b border-default-medium" role="none">
+                <p class="text-sm font-medium text-heading" role="none">
+                  Neil Sims
+                </p>
+                <p class="text-sm text-body truncate" role="none">
+                  neil.sims@flowbite.com
+                </p>
+              </div>
+              <ul class="p-2 text-sm text-body font-medium" role="none">
+                <li>
+                  <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">Dashboard</a>
+                </li>
+                <li>
+                  <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">Earnings</a>
+                </li>
+                <li>
+                  <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">Sign out</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+        </div>
     </div>
     </header>
 
@@ -152,6 +186,8 @@
                 </div>
             </form>
       </div>
+
+      
 
     <!-- latest Products -->
 
@@ -306,6 +342,7 @@
 
     <button id="AllNextBtn" class="flex items-center px-4 py-2 text-sm text-gray-700 bg-white border rounded-md">next</button>
     </div>
+    
 </section>
 
 
@@ -313,6 +350,7 @@
 
 
 
+  <!-- try -->
   
   <!-- <script type="module" src="script.js"></script> -->
   <script type="module" src="inventory.js"></script>

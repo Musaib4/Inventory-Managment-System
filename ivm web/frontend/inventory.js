@@ -469,8 +469,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderRows(displayedData);
 
-
-
 });
 
 
